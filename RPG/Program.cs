@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleRPGExample
 {
-    class Program
+    class Game
     {
-        static void Main(string[] args)
+        void Main()
         {
+
+            Console.ReadLine();
         }
     }
 }
