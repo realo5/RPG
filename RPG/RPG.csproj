@@ -61,6 +61,7 @@
     <Compile Include="Engine\Entities\StatBlock.cs" />
     <Compile Include="Engine\Entities\Users\User.cs" />
     <Compile Include="Engine\Entities\Users\UserManager.cs" />
+    <Compile Include="Engine\Entities\Users\UserRoleKey.cs" />
     <Compile Include="Engine\Interfaces\IEntity.cs" />
     <Compile Include="Engine\Interfaces\IHitDie.cs" />
     <Compile Include="Engine\Interfaces\IManage.cs" />

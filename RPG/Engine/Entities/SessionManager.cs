@@ -17,15 +17,22 @@ namespace RPG.Engine.Entities
             private set => _sessions = value;
         }
 
+        public Session CurrentSession { get; set; }
+
         public SessionManager()/*We shall have a default constructor here that initializes a manager without previous session data*/
         {
-            Create(); //In turn by overloading our Create Method we can have variations on what occurs depending on what parameters
+            CurrentSession = Create(); //In turn by overloading our Create Method we can have variations on what occurs depending on what parameters
             //It calls for and whether or not it is given an argument(s) in implementation.
+
+            //Once a CurrentSession is designated we can manipulate anything within further.
+            CurrentSession.Initialize();
         }
         //Here we just have the default Create method that requires no parameter
-        private void Create()
+        private Session Create()
         {
-            Sessions.Add(new Session());
+            Session newSession = new Session();
+            Sessions.Add(newSession);
+            return newSession;
         }
         //Meanwhile, here we might have the same method call tag but argue that there is a path to be considered and...
         public void Create(string path)

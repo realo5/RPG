@@ -14,6 +14,9 @@ namespace RPG.Engine.Entities
         {
             _userManager = new UserManager();
         }
-
+        public void Initialize()
+        {
+            _userManager.CurrentUser;
+        }
     }
 }
