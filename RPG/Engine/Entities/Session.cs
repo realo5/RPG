@@ -13,7 +13,6 @@ namespace RPG.Engine.Entities
         public Session() : base()
         {
             _userManager = new UserManager();
-            _userManager.Create(new MenuClient<string>());
         }
 
     }

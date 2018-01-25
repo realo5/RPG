@@ -10,13 +10,15 @@ namespace RPG.Engine.Entities
     internal sealed class SessionManager : EntityManager
     {
         private List<Session> _sessions = new List<Session>();
+        
         public List<Session> Sessions
         {
             get => _sessions;
             private set => _sessions = value;
         }
+
         public SessionManager()/*We shall have a default constructor here that initializes a manager without previous session data*/
-    {
+        {
             Create(); //In turn by overloading our Create Method we can have variations on what occurs depending on what parameters
             //It calls for and whether or not it is given an argument(s) in implementation.
         }

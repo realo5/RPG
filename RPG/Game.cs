@@ -13,7 +13,13 @@ namespace SimpleRPGExample
 {
     static class Game
     {
+        //This static field holds a collection of Sessions.
         private static SessionManager _sessionManager;
+        public static SessionManager SessionManager
+        {
+            get => _sessionManager;
+            set => _sessionManager = value;
+        }
 
         static void Main()
         {
@@ -24,11 +30,9 @@ namespace SimpleRPGExample
 
         static void InitializeSessionManager()
         {
-            //We will initialize objects in this fashion to better contain specific Entities in seperate manager classes.
+            //We will be leaving 
             _sessionManager = new SessionManager();
-            //Go ahead and navigate to Engine/Entities/SessionManager and Session, open those files and let's have a look at
-            //what we are doing with Sessions. This is where we will leave our mainMethod for a while as we are going deeper into
-            //our call hierarchy to what is contained in the implementation of a SessionManager's constructor.
+            
         }
     }
 }

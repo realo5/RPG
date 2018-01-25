@@ -8,6 +8,6 @@ namespace RPG.Engine.Entities
 {
     interface IManage
     {
-
+        
     }
 }
