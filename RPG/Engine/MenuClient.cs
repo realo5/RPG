@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleRPGExample.Engine
+namespace RPG.Engine
 {
     //MenuClient<Monster>
     class MenuClient<T>

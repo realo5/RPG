@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SimpleRPGExample.Entities;
+using RPG.Engine.Entities.Users;
 
-namespace SimpleRPGExample.Engine.Entities
+namespace RPG.Engine.Entities
 {
     internal class Session : Entity
     {
+        private UserManager _userManager;
+        public Session() : base()
+        {
+            _userManager = new UserManager();
+            _userManager.Create(new MenuClient<string>());
+        }
 
     }
 }

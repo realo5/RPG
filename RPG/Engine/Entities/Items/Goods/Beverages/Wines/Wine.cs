@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleRPGExample.Engine.Entities.Items.Goods
+namespace RPG.Engine.Entities.Items.Goods
 {
     abstract class Wine : Item
     {

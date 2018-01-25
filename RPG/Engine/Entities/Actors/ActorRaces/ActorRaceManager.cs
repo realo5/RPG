@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace SimpleRPGExample.Engine.Entities.Actors.ActorRaces
+using RPG.Engine.Entities.Actors.CreatureTypes;
+
+namespace RPG.Engine.Entities.Actors.ActorRaces
 {
     internal class ActorRaceManager : EntityManager
     {
@@ -10,7 +12,8 @@ namespace SimpleRPGExample.Engine.Entities.Actors.ActorRaces
         public List<ActorRace> Races { get; }
         public void CreateGoblin()
         {
-            _races.Add(new ActorRace());
+            CreatureTypeManager creatureTypeManager = new CreatureTypeManager();
+            _races.Add(new ActorRace(creatureTypeManager.Retrieve(CreatureTypeKey.Humanoid)));
         }
     }
 }

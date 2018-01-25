@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SimpleRPGExample.Monsters
+namespace RPG.Monsters
 {
     
     

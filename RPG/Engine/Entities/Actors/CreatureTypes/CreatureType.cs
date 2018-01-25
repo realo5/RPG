@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SimpleRPGExample.Engine.Entities.Actors.CreatureTypes;
+using RPG.Engine.Entities.Actors.CreatureTypes;
 
-namespace SimpleRPGExample.Engine.Entities.Actors.ActorRaces.CreatureTypes
+namespace RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes
 {
     internal class CreatureType : Entity
     {
-        public int HitDice { get; set; }
-        public CreatureType(CreatureTypeKey key)
+        public HitDie BaseHitDie{ get; set; }
+        public CreatureType(StatBlock statBlock)
         {
-
+            BaseHitDie = statBlock.HD;
         }
     }
 }
