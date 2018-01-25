@@ -24,7 +24,9 @@ namespace RPG.Engine
         //This method has some problems however. It only allows for string type objects to be returned.
         public T GetUserSelection()
         {
-            Console.Write(Prompt + ": ");
+            string promptAppendage = Prompt.EndsWith("?") ? " " : ": ";
+            Console.Write(Prompt + promptAppendage);
+            int test = Prompt.EndsWith("") ?  1 : 0;
             int horizontalPosition = Console.CursorLeft;
             int verticalPosition = Console.CursorTop;
             int index = 0;

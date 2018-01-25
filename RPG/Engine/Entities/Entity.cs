@@ -8,6 +8,9 @@ namespace RPG.Engine.Entities
 {
     internal abstract class Entity : IEntity
     {
-
+        public override string ToString()
+        {
+            return GetType().Name;
+        }
     }
 }

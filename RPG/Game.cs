@@ -23,14 +23,16 @@ namespace SimpleRPGExample
 
         static void Main()
         {
+            //Go ahead and add a breakpoint by double clicking the left column at line 27 on InitializeSessionManager();
             InitializeSessionManager();
 
+            //End Game
             Console.ReadLine();
         }
 
         static void InitializeSessionManager()
         {
-            //We will be leaving 
+            //We will be leaving the Game class here.
             _sessionManager = new SessionManager();
             
         }

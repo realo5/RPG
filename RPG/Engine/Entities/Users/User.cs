@@ -10,8 +10,6 @@ namespace RPG.Engine.Entities.Users
 {
     class User : Entity
     {
-
-
         private string _name;
         public string Name
         {
@@ -22,27 +20,19 @@ namespace RPG.Engine.Entities.Users
             }
         }
 
-        private UserRoleKey _currentRole;
-
-        public UserRoleKey CurrentRole
+        private UserRole _role;
+        public UserRole Role
         {
-            get { return _currentRole; }
-            set
-            {
-                _currentRole = value; 
-            }
+            get { return _role; }
+            set { _role = value; }
         }
 
-        public User(string name)
+
+        public User(string name, UserRole role)
         {
+            //Standard property assignement using the arguments passed in implementation
             Name = name;
-            MenuClient<UserRoleKey> userRoleMenu = new MenuClient<UserRoleKey>();
-            userRoleMenu.Prompt = "Choose your initial role";
-            foreach (UserRoleKey role in Enum.GetValues(typeof(UserRoleKey)).Cast<UserRoleKey>().ToList<UserRoleKey>())
-            {
-                userRoleMenu.Selections.Add(role);
-            }
-            CurrentRole = userRoleMenu.GetUserSelection();
+            Role = role;
 
         }
     }

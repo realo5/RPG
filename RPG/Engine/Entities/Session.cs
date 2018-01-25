@@ -10,13 +10,23 @@ namespace RPG.Engine.Entities
     internal class Session : Entity
     {
         private UserManager _userManager;
+        private DateTime _dateTime;
+        public DateTime DateTime
+        {
+            get => _dateTime;
+        }
+
         public Session() : base()
         {
             _userManager = new UserManager();
+            _dateTime = DateTime.Now;
+            Console.WriteLine
+                ($"User {_userManager.CurrentUser.Name} logged in as {_userManager.CurrentUser.Role.GetType().Name} at {DateTime}");
         }
+
         public void Initialize()
         {
-            _userManager.CurrentUser;
+            
         }
     }
 }

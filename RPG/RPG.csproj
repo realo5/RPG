@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Entities\Ability.cs" />
+    <Compile Include="Engine\Entities\Actors\Actor.cs" />
+    <Compile Include="Engine\Entities\Actors\ActorManager.cs" />
     <Compile Include="Engine\Entities\Actors\ActorRaces\ActorRace.cs" />
     <Compile Include="Engine\Entities\Actors\ActorRaces\ActorRaceManager.cs" />
     <Compile Include="Engine\Entities\Actors\CreatureTypes\CreatureType.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="Engine\Entities\StatBlock.cs" />
     <Compile Include="Engine\Entities\Users\User.cs" />
     <Compile Include="Engine\Entities\Users\UserManager.cs" />
+    <Compile Include="Engine\Entities\Users\UserRole.cs" />
     <Compile Include="Engine\Entities\Users\UserRoleKey.cs" />
     <Compile Include="Engine\Interfaces\IEntity.cs" />
     <Compile Include="Engine\Interfaces\IHitDie.cs" />
@@ -73,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Engine\Entities\Settings\Campaigns\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

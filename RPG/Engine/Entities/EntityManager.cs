@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    internal abstract class EntityManager : Entity
+    internal abstract class EntityManager : Entity, IManage
     {
-        
+        public abstract void Create();
     }
 }

@@ -10,6 +10,10 @@ namespace RPG.Engine.Entities.Actors.ActorRaces
     {
         private List<ActorRace> _races;
         public List<ActorRace> Races { get; }
+        public override void Create()
+        {
+            throw new Exception();
+        }
         public void CreateGoblin()
         {
             CreatureTypeManager creatureTypeManager = new CreatureTypeManager();

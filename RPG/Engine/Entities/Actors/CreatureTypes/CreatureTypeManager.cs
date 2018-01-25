@@ -27,15 +27,15 @@ namespace RPG.Engine.Entities.Actors.CreatureTypes
             {
                 case CreatureTypeKey.Aberration:
                     statblock = new StatBlock(new HitDie(1, 8));
-                    creatureType = Create(statblock);
+                    creatureType = Spawn(statblock);
                     break;
                 case CreatureTypeKey.Animal:
                     statblock = new StatBlock(new HitDie(1, 8));
-                    creatureType = Create(statblock);
+                    creatureType = Spawn(statblock);
                     break;
                 case CreatureTypeKey.Humanoid:
                     statblock = new StatBlock(new HitDie(1, 8));
-                    creatureType = Create(statblock);
+                    creatureType = Spawn(statblock);
                     break;
                 default:
                     throw new Exception("Prohibited CreatureType Key Detected");
@@ -43,14 +43,19 @@ namespace RPG.Engine.Entities.Actors.CreatureTypes
             return creatureType;
         }
 
+        private CreatureType Spawn(StatBlock statBlock)
+        {
+            return new CreatureType(statBlock);
+        }
+
         public void Publish()
         {
 
         }
 
-        private CreatureType Create(StatBlock statBlock)
+        public override void Create()
         {
-            return new CreatureType(statBlock);
+            throw new Exception();
         }
     }
 }
