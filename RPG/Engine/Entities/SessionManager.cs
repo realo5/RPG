@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    internal sealed class SessionManager : EntityManager
+    public sealed class SessionManager : EntityManager
     {
         //This will highlight because it is a field with a default value assigned to it. So this happens right at initialization and then...
         private List<Session> _sessions = new List<Session>();

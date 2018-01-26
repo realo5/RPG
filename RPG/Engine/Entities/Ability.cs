@@ -6,26 +6,27 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    struct Ability
+    public struct Ability
     {
+        public CoreAbilityKey Key { get; set; }
         public int Score { get; set; }
 
         public int _modifier;
         public int Modifier
         {
             get => _modifier;
-            private set
-            {
-                _modifier = value;
-            }
+            set => _modifier = value;
         }
-        public Ability(int score) : this()
+
+        public Ability(CoreAbilityKey key, int score) : this()
         {
+            Key = key;
             Score = score;
             Modifier = (Score / 2) - 5;
         }
-        public Ability(double seed) : this()
+        public Ability(CoreAbilityKey key, double seed) : this()
         {
+            Key = key;
             Score = new Random((int)seed).Next(3, 18);
         }
     }

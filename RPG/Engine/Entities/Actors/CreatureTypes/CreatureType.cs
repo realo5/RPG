@@ -7,7 +7,7 @@ using RPG.Engine.Entities.Actors.CreatureTypes;
 
 namespace RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes
 {
-    internal class CreatureType : Entity
+    public class CreatureType : Entity
     {
         public HitDie BaseHitDie{ get; set; }
         public CreatureType(StatBlock statBlock)

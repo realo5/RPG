@@ -6,7 +6,7 @@ using RPG.Engine.Entities.Actors.CreatureTypes;
 
 namespace RPG.Engine.Entities.Actors.ActorRaces
 {
-    internal class ActorRaceManager : EntityManager
+    public class ActorRaceManager : EntityManager
     {
         private List<ActorRace> _races;
         public List<ActorRace> Races { get; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    struct StatBlock : IHitDie
+    public struct StatBlock : IHitDie
     {
         public HitDie HD { get; set; } 
 

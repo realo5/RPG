@@ -7,7 +7,7 @@ using RPG.Engine.Entities.Actors.ActorRaces;
 
 namespace RPG.Engine.Entities.Actors
 {
-    class Actor : Entity
+    public class Actor : Entity
     {
         public string Name { get; set; }
         public ActorRace Race { get; set; }
@@ -28,9 +28,9 @@ namespace RPG.Engine.Entities.Actors
             "aloire"
         };
 
-        private Dictionary<string, Ability> _abilities;
+        private List<Ability> _abilities;
 
-        public Dictionary<string, Ability> Abilities
+        public List<Ability> Abilities
         {
             get { return _abilities; }
             set { _abilities = value; }
@@ -48,15 +48,10 @@ namespace RPG.Engine.Entities.Actors
 
             Random prng = new Random((int)seed);
 
-            Abilities = new Dictionary<string, Ability>()
+            foreach(CoreAbilityKey key in Enum.GetValues(typeof(CoreAbilityKey)).Cast<CoreAbilityKey>().ToList<CoreAbilityKey>())
             {
-                { "Strength", new Ability(seed) },
-                { "Dexterity", new Ability(seed) },
-                { "Constitution", new Ability(seed) },
-                { "Intelligence", new Ability(seed) },
-                { "Wisdom", new Ability(seed) },
-                { "Charisma", new Ability(seed) },
-            };
+                Abilities.Add(new Ability(key, seed));
+            }
 
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -71,9 +66,9 @@ namespace RPG.Engine.Entities.Actors
 
         public void DisplayAbilities()
         {
-            foreach (KeyValuePair<string, Ability> pair in Abilities)
+            foreach (Ability ability in Abilities)
             {
-                Console.WriteLine($"{pair.Key}: {pair.Value.Score}({pair.Value.Modifier})");
+                Console.WriteLine($"{ability.Key}: {ability.Score}({ability.Modifier})");
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    internal struct HitDie
+    public struct HitDie
     {
         public int Amount { get; set; }
         public int Sides { get; set; }

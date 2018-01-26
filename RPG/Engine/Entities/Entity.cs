@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    internal abstract class Entity : IEntity
+    public abstract class Entity : IEntity
     {
         private double _seed;
         public double Seed

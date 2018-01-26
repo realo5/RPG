@@ -8,9 +8,10 @@ using RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes;
 namespace RPG.Engine.Entities.Actors.ActorRaces
 {
     //There can be only one type of each ActorRace
-    internal class ActorRace : Entity
+    public class ActorRace : Entity
     {
         protected CreatureType CreatureType { get; set; }
+        public ActorRace() { }
         public ActorRace(CreatureType type)
         {
             this.CreatureType = type;

@@ -62,6 +62,8 @@
     <Compile Include="Engine\Entities\Session.cs" />
     <Compile Include="Engine\Entities\SessionManager.cs" />
     <Compile Include="Engine\Entities\StatBlock.cs" />
+    <Compile Include="Engine\Entities\Users\Player.cs" />
+    <Compile Include="Engine\Entities\Users\StoryTeller.cs" />
     <Compile Include="Engine\Entities\Users\User.cs" />
     <Compile Include="Engine\Entities\Users\UserManager.cs" />
     <Compile Include="Engine\Entities\Users\UserRole.cs" />
@@ -69,9 +71,11 @@
     <Compile Include="Engine\Interfaces\IEntity.cs" />
     <Compile Include="Engine\Interfaces\IHitDie.cs" />
     <Compile Include="Engine\Interfaces\IManage.cs" />
+    <Compile Include="Engine\Interfaces\IName.cs" />
     <Compile Include="Engine\Interfaces\ISubType.cs" />
     <Compile Include="Engine\MainMenuOptions.cs" />
     <Compile Include="Engine\MenuClient.cs" />
+    <Compile Include="Engine\SeedGenerator.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

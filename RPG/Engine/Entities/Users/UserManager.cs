@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities.Users
 {
-    class UserManager: EntityManager
+    class UserManager: EntityManager, IName
     {
         private List<User> _users = new List<User>();
 
         public User CurrentUser
         { get;set; }
+
+        public SeedGenerator SeedGenerator { get; set; }
 
         public User this[string name]
         {
@@ -24,65 +29,64 @@ namespace RPG.Engine.Entities.Users
             set => _users = value;
         }
 
-        private double _seed;
-        public double GetSeed()
+        public UserManager() : base()
         {
-            return _seed;
-        }
-
-        public UserManager(DateTime seed) : base()
-        {
-            _seed = seed.ToOADate();
+            //User manager is built to automatically create a User if it isn't passed a path to a database of users.
+            SeedGenerator = new SeedGenerator(DateTime.Now);
         }
 
         public override void Create()
         {
-            //We create a menu client using our own pre-designed tools to make console interaction easier to setup.
-            //First we need a userName so we will set the type parameter to string for the generic type object MenuClient<T>
+            //First we get the user input for a name.
+            string userName = AssignName();
+            //Then we allow the selection of a role.
+            UserRole userRole = AssignUserRole();
+            //Then we construct the desired object by passing our arguments to the User constructor.
+            User newUser = new User(userName, userRole);
+            //Adding the new user to a collection of users
+            Users.Add(newUser);
+            //We assign a newly created user to the CurrentUser property for ease of access.
+            CurrentUser = newUser;
+            //Otherwise we might have to do Users[indexOfParticularUser] in order to find our required element of the list.
+            //Or...which we will do in some occassions, user = Users.Where(u => u.Name == "Somenamewe Arelookingfor");
+            //Finally, we write our objects to persistence
+            UpdateUsers();
+        }
+        //This method along with the AssignUserRole were just loose functions in the create method but we have extracted the to 
+        //reduce method bloat...which to be honest just makes things hard to read. This keeps things in a very obvious grouping.
+        public string AssignName()
+        {
             MenuClient<string> userStringClient = new MenuClient<string>();
-            //So in this section below we will just be making method calls to the instance userStringClient
             userStringClient.Prompt = "Enter User name";
-            //return the user's input from this method. MenuClient<T>.GetUserInput() is a return method which means that it's result is to be sent out
-            //to an assignment, in this case userName.
-            string userName = userStringClient.GetUserInput();
-            //See UserRole : Entity...
-            //Here we allow the user to select what they will be interfacing as...this is where things may throw you but remember much of this is just
-            //naming conventions.
-            //We could have called UserRoleKey RoleKey or UserRole Role so why so specific if it isn't inheriting from a broader super class like Role
-            //or AbstractRole. In this case this object variety will be a property or element of User which means it is a part of it's composition.
-            //This is to clearly imply what the object is meant to be a part of. Also, by naming UserRole as we have, now we can be more generic in
-            //our element naming within User so that now we can call user.Role which is public UserRole Role {get;set;} instead of user.UserRole.
-            //Not nearly as pleasant reading, no?
+            return userStringClient.GetUserInput();
+        }
+
+        public UserRole AssignUserRole()
+        {
             MenuClient<UserRoleKey> userRoleClient = new MenuClient<UserRoleKey>();
             userRoleClient.Prompt = "What shall be your role?";
-            //Here, if you don't recall from before, we are drawing from an EnumeratedList or Enum of UserRoles that are available in this program.
-            //There will likely be more added later for administration purposes but for now: Player and StoryTeller will do us fine.
-            //This foreach loop is used to iterate throughout the values of the enum UserRoleKey.
-            //loopstatement(Type instance "within" Enum.StaticCall(for a typeof UserRoleKey).then turn it into UserRoleKey.then turn those values
-            //into a list to step through.
             foreach (UserRoleKey roleKey in Enum.GetValues(typeof(UserRoleKey)).Cast<UserRoleKey>().ToList<UserRoleKey>())
             {
                 userRoleClient.Selections.Add(roleKey);
             }
-            UserRole userRole; //Here I am just making it clear that we are using a new instance of userRole soon...but I could have made this one line.
-            //This line is a bit of a doozy. This is an example of CSharp's syntactical sugar.
-            //Depending on which Key we are return we do one or the other: return a new Player object or a new StoryTeller object
-            //Both of which, you'll notice are derived from UserRole.
-
-            userRole = userRoleClient
-                .GetUserSelection() == UserRoleKey.Player ? (UserRole)new Player(GetSeed()) : new StoryTeller();
-
-            //Finally we take our required values for a new User and instantiate them here.
-            User newUser = new User(userName, userRole);
-            //We add this new user to a collection of Users for the manager to maintain if need be(for multiplayer interfacing)
-            Users.Add(newUser);
-            //And return the User to be consumed.
-            CurrentUser = newUser;
+            return userRoleClient.GetUserSelection() == UserRoleKey.Player ? (UserRole)new Player() : new StoryTeller();
         }
 
         public override void Create(double seed)
         {
             throw new NotImplementedException();
+        }
+
+        private void UpdateUsers()
+        {
+            XmlSerializer serializer = 
+                new XmlSerializer(typeof(List<User>), new Type[] {typeof(User)});
+            string usersPath = 
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB\Users";
+            Console.WriteLine(usersPath);
+            StreamWriter writer =
+                new StreamWriter(usersPath);
+            serializer.Serialize(writer, Users);
         }
     }
 }

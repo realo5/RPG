@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    internal abstract class EntityManager : Entity, IManage
+    public abstract class EntityManager : Entity, IManage
     {   
         //The Base class the EntityManager which you will note: is also a descendant of Entity. So, An EntityManager is an Entity...
         //      Entity <-----------------------------------------

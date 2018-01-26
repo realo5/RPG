@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine
 {
-    enum CoreAbilityKey
+    public enum CoreAbilityKey
     {
         Strength,
         Dexterity,

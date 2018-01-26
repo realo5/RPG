@@ -8,16 +8,14 @@ using RPG.Engine.Entities;
 
 namespace RPG.Engine.Entities.Users
 {
-    class User : Entity
+    [Serializable]
+    public class User : Entity
     {
         private string _name;
         public string Name
         {
             get => _name;
-            private set
-            {
-                _name = value;
-            }
+            set => _name = value;
         }
 
         private UserRole _role;
@@ -27,6 +25,10 @@ namespace RPG.Engine.Entities.Users
             set { _role = value; }
         }
 
+        public User() : base()
+        {
+
+        }
 
         public User(string name, UserRole role)
         {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes.SubTypes
+namespace RPG.Engine.Interfaces
 {
-    abstract public partial class SubType : ISubType
+    public interface IName
     {
-
+        string AssignName();
     }
 }
