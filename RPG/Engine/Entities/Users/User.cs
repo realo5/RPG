@@ -25,17 +25,28 @@ namespace RPG.Engine.Entities.Users
             set { _role = value; }
         }
 
+        private string _password;
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
+
+        private SessionManager _sessionManager;
+
         public User() : base()
         {
 
         }
 
-        public User(string name, UserRole role)
+        public User(string name, UserRole role, string password) : base()
         {
             //Standard property assignement using the arguments passed in implementation
             Name = name;
             Role = role;
-
+            Password = password;
         }
+
+        public override string ToString() => this.Name;
     }
 }

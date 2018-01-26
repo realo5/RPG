@@ -33,8 +33,7 @@ namespace RPG.Engine.Entities
 
         public EntityManager()
         {
-            //If a Manager class is derived from EntityManager, it's own default, parameterless constructor will also call upon this same Create() method from itself.
-            Create();
+
         }
 
         public EntityManager(double seed)

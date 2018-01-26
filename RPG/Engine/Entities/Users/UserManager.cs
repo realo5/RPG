@@ -29,10 +29,57 @@ namespace RPG.Engine.Entities.Users
             set => _users = value;
         }
 
-        public UserManager() : base()
+        public UserManager() : base() { }
+
+        public UserManager(string path) : base()
         {
-            //User manager is built to automatically create a User if it isn't passed a path to a database of users.
-            SeedGenerator = new SeedGenerator(DateTime.Now);
+            if (File.Exists(path + @"\Users.xml"))
+            {
+                RetrieveUsers(path);
+                User userSelection = UserSelect();
+                UserLogin(userSelection);
+            }
+            else
+                Create();
+        }
+
+        private void UserLogin(User userSelection)
+        {
+            MenuClient<string> stringClient = new MenuClient<string>();
+            stringClient.Prompt = "Please login with your password";
+            bool passwordValid = false;
+            while(passwordValid == false)
+            {
+                if (stringClient.GetUserInput() != userSelection.Password)
+                    Console.WriteLine("Invalid password...");
+                else
+                {
+                    CurrentUser = userSelection;
+                    passwordValid = true;
+                }
+            }
+                
+        }
+
+        private User UserSelect()
+        {
+            MenuClient<User> userMenu =
+                new MenuClient<User>();
+            userMenu.Prompt = "Select a User";
+            userMenu.Selections = Users;
+            return userMenu.GetUserSelection();
+        }
+
+        private void RetrieveUsers(string path)
+        {
+            string usersPath = path + @"\Users.xml";
+
+            XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
+
+            using (Stream reader = new FileStream(usersPath, FileMode.Open))
+            {
+                Users = (List<User>)serializer.Deserialize(reader);
+            }
         }
 
         public override void Create()
@@ -41,8 +88,9 @@ namespace RPG.Engine.Entities.Users
             string userName = AssignName();
             //Then we allow the selection of a role.
             UserRole userRole = AssignUserRole();
+            string userPassword = AssignPassword();
             //Then we construct the desired object by passing our arguments to the User constructor.
-            User newUser = new User(userName, userRole);
+            User newUser = new User(userName, userRole, userPassword);
             //Adding the new user to a collection of users
             Users.Add(newUser);
             //We assign a newly created user to the CurrentUser property for ease of access.
@@ -59,6 +107,24 @@ namespace RPG.Engine.Entities.Users
             MenuClient<string> userStringClient = new MenuClient<string>();
             userStringClient.Prompt = "Enter User name";
             return userStringClient.GetUserInput();
+        }
+
+        public string AssignPassword()
+        {
+            MenuClient<string> userStringClient = new MenuClient<string>();
+            userStringClient.Prompt = "Password";
+            bool passwordValid = false;
+            string userPassword;
+            while(!passwordValid)
+            {
+                userPassword = userStringClient.GetUserInput();
+                if (userPassword.Count() >= 8)
+                {
+                    passwordValid = true;
+                }
+                return userPassword;
+            }
+            throw new Exception("Password Invalid");
         }
 
         public UserRole AssignUserRole()
@@ -82,7 +148,7 @@ namespace RPG.Engine.Entities.Users
             XmlSerializer serializer = 
                 new XmlSerializer(typeof(List<User>), new Type[] {typeof(User)});
             string usersPath = 
-                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB\Users";
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB\Users.xml";
             Console.WriteLine(usersPath);
             StreamWriter writer =
                 new StreamWriter(usersPath);
