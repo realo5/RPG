@@ -57,5 +57,10 @@ namespace RPG.Engine.Entities.Actors.CreatureTypes
         {
             throw new Exception();
         }
+
+        public override void Create(double seed)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

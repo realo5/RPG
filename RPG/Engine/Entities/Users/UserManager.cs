@@ -24,12 +24,15 @@ namespace RPG.Engine.Entities.Users
             set => _users = value;
         }
 
-        public UserManager()
+        private double _seed;
+        public double GetSeed()
         {
-            //...still returning from the Create Method, that is privately accessible only to the UserManager class which means that here
-            //upon initialization we will automatically call this(or self in Ruby).Create() and then we are assigning what User is returned
-            //from the method to the CurrentUser property for ease of access for outside interaction.
-            Create();
+            return _seed;
+        }
+
+        public UserManager(DateTime seed) : base()
+        {
+            _seed = seed.ToOADate();
         }
 
         public override void Create()
@@ -65,13 +68,21 @@ namespace RPG.Engine.Entities.Users
             //This line is a bit of a doozy. This is an example of CSharp's syntactical sugar.
             //Depending on which Key we are return we do one or the other: return a new Player object or a new StoryTeller object
             //Both of which, you'll notice are derived from UserRole.
-            userRole = userRoleClient.GetUserSelection() == UserRoleKey.Player ? (UserRole)new Player() : new StoryTeller();
+
+            userRole = userRoleClient
+                .GetUserSelection() == UserRoleKey.Player ? (UserRole)new Player(GetSeed()) : new StoryTeller();
+
             //Finally we take our required values for a new User and instantiate them here.
             User newUser = new User(userName, userRole);
             //We add this new user to a collection of Users for the manager to maintain if need be(for multiplayer interfacing)
             Users.Add(newUser);
             //And return the User to be consumed.
             CurrentUser = newUser;
+        }
+
+        public override void Create(double seed)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -14,6 +14,12 @@ namespace RPG.Engine.Entities.Actors.ActorRaces
         {
             throw new Exception();
         }
+
+        public override void Create(double seed)
+        {
+            throw new NotImplementedException();
+        }
+
         public void CreateGoblin()
         {
             CreatureTypeManager creatureTypeManager = new CreatureTypeManager();

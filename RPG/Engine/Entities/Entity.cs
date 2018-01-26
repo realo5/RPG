@@ -8,9 +8,21 @@ namespace RPG.Engine.Entities
 {
     internal abstract class Entity : IEntity
     {
+        private double _seed;
+        public double Seed
+        { get => _seed; }
+
         public override string ToString()
         {
             return GetType().Name;
+        }
+        public Entity()
+        {
+
+        }
+        public Entity(double seed)
+        {
+            _seed = seed;
         }
     }
 }

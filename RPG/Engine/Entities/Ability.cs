@@ -9,6 +9,7 @@ namespace RPG.Engine.Entities
     struct Ability
     {
         public int Score { get; set; }
+
         public int _modifier;
         public int Modifier
         {
@@ -22,6 +23,10 @@ namespace RPG.Engine.Entities
         {
             Score = score;
             Modifier = (Score / 2) - 5;
+        }
+        public Ability(double seed) : this()
+        {
+            Score = new Random((int)seed).Next(3, 18);
         }
     }
 }

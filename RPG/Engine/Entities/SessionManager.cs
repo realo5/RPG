@@ -9,6 +9,7 @@ namespace RPG.Engine.Entities
 {
     internal sealed class SessionManager : EntityManager
     {
+        //This will highlight because it is a field with a default value assigned to it. So this happens right at initialization and then...
         private List<Session> _sessions = new List<Session>();
         
         public List<Session> Sessions
@@ -18,19 +19,16 @@ namespace RPG.Engine.Entities
         }
 
         public Session CurrentSession { get; set; }
+        //We move to the default parameterless constructor for the SessionManager which pulls us out to...
+        public SessionManager() : base()
+        { 
 
-        public SessionManager()/*We shall have a default constructor here that initializes a manager without previous session data*/
-        {
-            Create(); //In turn by overloading our Create Method we can have variations on what occurs depending on what parameters
-                                        //It calls for and whether or not it is given an argument(s) in implementation.
-            //So we could also have public SessionManager(string path) { and then load from an .xml or .json file }
-
-            //Once a CurrentSession is designated we can manipulate anything within further.
-            CurrentSession.Initialize();
         }
         //Here we just have the default Create method that requires no parameter
         public override void Create()
         {
+            //This is Create as it would have been called from Entity's constructor but her is implemented as a specific Create() method as per the class with the following code...
+            //First, creating a new session instance
             Session newSession = new Session();
             Sessions.Add(newSession);
             CurrentSession = newSession;
@@ -39,6 +37,11 @@ namespace RPG.Engine.Entities
         public void Create(string path)
         {
 
+        }
+
+        public override void Create(double seed)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using RPG.Engine.Entities;
 //Check out the file hierarchy to see what I mean.
 
-namespace SimpleRPGExample
+namespace RPG
 {
     static class Game
     {
@@ -34,7 +34,6 @@ namespace SimpleRPGExample
         {
             //We will be leaving the Game class here.
             _sessionManager = new SessionManager();
-            
         }
     }
 }

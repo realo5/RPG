@@ -18,9 +18,9 @@ namespace RPG.Engine.Entities.Users
     class Player : UserRole
     {
         public Actor Actor { get; set; }
-        public Player() : base()
+        public Player(double seed) : base()
         {
-
+            ActorManager actorManager = new ActorManager(seed);
         }
         
     }
