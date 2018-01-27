@@ -25,13 +25,12 @@ namespace RPG
             //but first we will check to see if we have a persistent file of users available.
             //This is grabbing your own path to your designated desktop on a Windows PC and appends the desired
             //Directory for our purposes.
-            string dbPath = DBPath;
             //If this directory does not exist...
-            if (!Directory.Exists(dbPath))
+            if (!Directory.Exists(DBPath))
                 //Then we make it exist...
-                Directory.CreateDirectory(dbPath);
-
-            _userManager = new UserManager(dbPath);
+                Directory.CreateDirectory(DBPath);
+            //Either way, we still create a new UserManager with the path as it's argument.
+            _userManager = new UserManager(DBPath);
 
             //End Game
             Console.ReadLine();

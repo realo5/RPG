@@ -41,6 +41,11 @@ namespace RPG.Engine.Entities
             Create(seed);
         }
 
+        public EntityManager(string path)
+        {
+
+        }
+
         public abstract void Create();
         public abstract void Create(double seed);
     }

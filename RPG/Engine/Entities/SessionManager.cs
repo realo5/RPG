@@ -3,7 +3,9 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 using System.Threading.Tasks;
+using RPG.Engine.Entities.Users;
 
 namespace RPG.Engine.Entities
 {
@@ -23,6 +25,23 @@ namespace RPG.Engine.Entities
         public SessionManager() : base()
         { 
 
+        }
+
+        public SessionManager(User user) : base()
+        {
+            new Session(user);
+        }
+
+        private void RetrieveSessions(string path)
+        {
+            string usersPath = path + @"\Users.xml";
+
+            XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
+
+            using (Stream reader = new FileStream(usersPath, FileMode.Open))
+            {
+                Sessions = (List<Session>)serializer.Deserialize(reader);
+            }
         }
         //Here we just have the default Create method that requires no parameter
         public override void Create()

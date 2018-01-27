@@ -33,6 +33,10 @@ namespace RPG.Engine.Entities.Users
         }
 
         private SessionManager _sessionManager;
+        public Session CurrentSession
+        {
+            get; set;
+        }
 
         public User() : base()
         {
@@ -45,6 +49,7 @@ namespace RPG.Engine.Entities.Users
             Name = name;
             Role = role;
             Password = password;
+            _sessionManager = new SessionManager(this);
         }
 
         public override string ToString() => this.Name;
