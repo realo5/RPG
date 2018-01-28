@@ -32,11 +32,11 @@ namespace RPG.Engine.Entities
         public Session(User user) : base()
         {
             DateTime = DateTime.Now;
-            if(user.Role.GetType() == typeof(Player))
+            if(user.Role == UserRole.Player)
             {
                 this.SessionType = SessionKey.PlayerSession;
             }
-            else if(user.Role.GetType() == typeof(StoryTeller))
+            else if(user.Role == UserRole.StoryTeller)
             {
                 this.SessionType = SessionKey.StoryTellerSession;
             }

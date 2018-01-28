@@ -156,13 +156,13 @@ namespace RPG.Engine.Entities.Users
 
         public UserRole AssignUserRole()
         {
-            MenuClient<UserRoleKey> userRoleClient = new MenuClient<UserRoleKey>();
+            MenuClient<UserRole> userRoleClient = new MenuClient<UserRole>();
             userRoleClient.Prompt = "What shall be your role?";
-            foreach (UserRoleKey roleKey in Enum.GetValues(typeof(UserRoleKey)).Cast<UserRoleKey>().ToList<UserRoleKey>())
+            foreach (UserRole roleKey in Enum.GetValues(typeof(UserRole)).Cast<UserRole>().ToList<UserRole>())
             {
                 userRoleClient.Selections.Add(roleKey);
             }
-            return userRoleClient.GetUserSelection() == UserRoleKey.Player ? (UserRole)new Player() : new StoryTeller();
+            return userRoleClient.GetUserSelection();
         }
 
         private void UpdateUsers()

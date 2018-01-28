@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities.Users
 {
-    enum UserRoleKey
+    public enum UserRole
     {
         Player,
         StoryTeller

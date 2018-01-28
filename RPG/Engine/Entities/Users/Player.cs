@@ -7,14 +7,14 @@ using RPG.Engine.Entities.Actors;
 
 namespace RPG.Engine.Entities.Users
 {
-    [Serializable]
-    public class Player : UserRole
-    {
-        public Actor Actor { get; set; }
-        public Player() : base()
-        {
-            ActorManager actorManager = new ActorManager();
-        }
+    //[Serializable]
+    //public class Player : UserRole
+    //{
+    //    public Actor Actor { get; set; }
+    //    public Player() : base()
+    //    {
+    //        ActorManager actorManager = new ActorManager();
+    //    }
 
-    }
+    //}
 }
