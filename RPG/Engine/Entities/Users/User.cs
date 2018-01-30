@@ -18,6 +18,15 @@ namespace RPG.Engine.Entities.Users
             set => _name = value;
         }
 
+        private string _email;
+
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+
+
         private UserRole _role;
         public UserRole Role
         {
