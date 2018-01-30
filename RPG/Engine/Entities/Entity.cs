@@ -16,6 +16,7 @@ namespace RPG.Engine.Entities
         {
             return GetType().Name;
         }
+
         public Entity()
         {
 
@@ -24,5 +25,8 @@ namespace RPG.Engine.Entities
         {
             _seed = seed;
         }
+
+        
     }
+
 }

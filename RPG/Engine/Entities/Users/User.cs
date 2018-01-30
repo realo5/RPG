@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using RPG.Engine.Entities;
+using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities.Users
 {
     [Serializable]
-    public class User : Entity
+    public class User : Entity, INameable
     {
         private string _name;
         public string Name
@@ -46,6 +46,7 @@ namespace RPG.Engine.Entities.Users
         {
             get; set;
         }
+        string INameable.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public User() : base()
         {
@@ -62,6 +63,6 @@ namespace RPG.Engine.Entities.Users
             
         }
 
-        public override string ToString() => this.Name;
+        public override string ToString() => this.Role + this.Name;
     }
 }

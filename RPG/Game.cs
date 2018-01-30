@@ -31,6 +31,7 @@ namespace RPG
                 Directory.CreateDirectory(DBPath);
             //Either way, we still create a new UserManager with the path as it's argument.
             _userManager = new UserManager(DBPath);
+            
 
             //End Game
             Console.ReadLine();

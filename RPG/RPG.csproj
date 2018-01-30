@@ -72,6 +72,7 @@
     <Compile Include="Engine\Interfaces\IHitDie.cs" />
     <Compile Include="Engine\Interfaces\IManage.cs" />
     <Compile Include="Engine\Interfaces\IName.cs" />
+    <Compile Include="Engine\Interfaces\INameable.cs" />
     <Compile Include="Engine\Interfaces\ISubType.cs" />
     <Compile Include="Engine\MainMenuOptions.cs" />
     <Compile Include="Engine\MenuClient.cs" />

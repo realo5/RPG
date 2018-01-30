@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPG.Engine.Entities
+namespace RPG.Engine.Interfaces
 {
-    public class Item : Entity
+    interface INameable
     {
-
+        string Name { get; set; }
     }
 }
