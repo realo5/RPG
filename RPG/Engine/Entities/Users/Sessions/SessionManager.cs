@@ -9,6 +9,8 @@ using RPG.Engine.Entities.Users;
 
 namespace RPG.Engine.Entities
 {
+    public delegate void NewSessionDelegate(User user);
+
     public sealed class SessionManager : EntityManager
     {
         //This will highlight because it is a field with a default value assigned to it. So this happens right at initialization and then...

@@ -50,6 +50,7 @@ namespace RPG.Engine.Entities.Users
             Role = role;
             Password = password;
             _sessionManager = new SessionManager(this);
+            
         }
 
         public override string ToString() => this.Name;
