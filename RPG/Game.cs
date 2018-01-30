@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using RPG.Engine;
 using RPG.Engine.Entities;
 using RPG.Engine.Entities.Users;
+using RPG.Engine.Entities.Items;
 
 //Check out the file hierarchy to see what I mean.
 
@@ -31,8 +32,9 @@ namespace RPG
                 Directory.CreateDirectory(DBPath);
             //Either way, we still create a new UserManager with the path as it's argument.
             _userManager = new UserManager(DBPath);
-            
-
+            Pie applePie = new Pie();
+            applePie.Presentation = "Plated";
+            applePie.Name = "Grandmothers Apple Pie";
             //End Game
             Console.ReadLine();
         }
