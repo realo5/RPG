@@ -57,6 +57,7 @@
     <Compile Include="Engine\Entities\EntityKey.cs" />
     <Compile Include="Engine\Entities\EntityManager.cs" />
     <Compile Include="Engine\Entities\HitDie.cs" />
+    <Compile Include="Engine\Entities\Items\Food.cs" />
     <Compile Include="Engine\Entities\Items\Goods\Beverages\Wines\Wine.cs" />
     <Compile Include="Engine\Entities\Items\Item.cs" />
     <Compile Include="Engine\Entities\Users\Sessions\Session.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Engine\Interfaces\IHitDie.cs" />
     <Compile Include="Engine\Interfaces\IManage.cs" />
     <Compile Include="Engine\Interfaces\IName.cs" />
+    <Compile Include="Engine\Interfaces\Inameable.cs" />
     <Compile Include="Engine\Interfaces\ISubType.cs" />
     <Compile Include="Engine\MainMenuOptions.cs" />
     <Compile Include="Engine\MenuClient.cs" />
