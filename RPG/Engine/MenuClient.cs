@@ -82,7 +82,7 @@ namespace RPG.Engine
                 }
                 else if (input == ConsoleKey.Enter)
                 {
-                    break;
+                    selectionMade = true;
                 }
             }
             selection = Selections[index];

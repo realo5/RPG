@@ -9,7 +9,7 @@ using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities.Users
 {
-    class UserManager: EntityManager, IName
+    class UserManager: EntityManager, IName, IManage<User>
     {
         private List<User> _users = new List<User>();
 
@@ -175,6 +175,26 @@ namespace RPG.Engine.Entities.Users
             StreamWriter writer =
                 new StreamWriter(usersPath);
             serializer.Serialize(writer, Users);
+        }
+
+        public override void Store()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override User Retrieve()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Destroy()
+        {
+            throw new NotImplementedException();
+        }
+
+        User IManage<User>.Retrieve()
+        {
+            throw new NotImplementedException();
         }
     }
 }

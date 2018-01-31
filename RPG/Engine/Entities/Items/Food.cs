@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities.Items
 {
-    public abstract class Food : INameable
+    public abstract class Food : Item, INameable
     {
         public string Presentation
         {

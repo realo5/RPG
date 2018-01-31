@@ -8,15 +8,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RPG.Engine.Entities.EntityManager" Collapsed="true">
-    <Position X="15" Y="0.5" Width="1.5" />
+    <Position X="11" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABCACAAAAAAAAAAEAAAAAAAABAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAABCACAAAAAAABAAEAAAAAAAQBAAAA=</HashCode>
       <FileName>Engine\Entities\EntityManager.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="RPG.Engine.Entities.Entity">
-    <Position X="8.5" Y="0.5" Width="1.5" />
+    <Position X="10.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Engine\Entities\Entity.cs</FileName>
@@ -24,54 +23,219 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="RPG.Engine.Entities.Users.UserManager">
-    <Position X="15" Y="1.75" Width="1.5" />
+    <Position X="8.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAACAAAIAAAAAACYAAAAAIACAABMAAAAAACEAAAAA=</HashCode>
+      <HashCode>EIAAACAABIAAAAAACYAAAAAIACBABMAAAAAACUAAAAA=</HashCode>
       <FileName>Engine\Entities\Users\UserManager.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="RPG.Engine.Entities.Users.User">
-    <Position X="8.5" Y="3.5" Width="1.5" />
+    <Position X="6.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQQAIAgAAAAAAAAEEAAAAAQAAAAAAAACAAABAAAAAAA=</HashCode>
+      <HashCode>AQQAIAgAACAAAAgEEAAAAAQAAAAAAAACAAABAAAAAAE=</HashCode>
       <FileName>Engine\Entities\Users\User.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="RPG.Engine.Entities.Users.UserRole">
-    <Position X="11.5" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Engine\Entities\Users\UserRole.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RPG.Engine.Entities.Users.Player" Collapsed="true">
-    <Position X="10.75" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Engine\Entities\Users\Player.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RPG.Engine.Entities.Users.StoryTeller" Collapsed="true">
-    <Position X="12.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Engine\Entities\Users\StoryTeller.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="RPG.Engine.Entities.Actors.ActorManager">
-    <Position X="17.5" Y="0.5" Width="1.5" />
+    <Position X="15.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Engine\Entities\Actors\ActorManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="RPG.Engine.Entities.Users.UserRoleKey">
-    <Position X="10.5" Y="1.25" Width="1.5" />
+  <Class Name="RPG.Engine.Entities.Actors.ActorRaces.ActorRace" Collapsed="true">
+    <Position X="14.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAAAA=</HashCode>
-      <FileName>Engine\Entities\Users\UserRoleKey.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Actors\ActorRaces\ActorRace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.Entities.Actors.ActorRaces.ActorRaceManager" Collapsed="true">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAggAEAAACAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Actors\ActorRaces\ActorRaceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes.CreatureType" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Engine\Entities\Actors\CreatureTypes\CreatureType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.Entities.Actors.CreatureTypes.CreatureTypeManager" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAQAAAEEAAAAAAAAAAEAAAAAAAAAAQAA=</HashCode>
+      <FileName>Engine\Entities\Actors\CreatureTypes\CreatureTypeManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.Entities.Actors.Actor" Collapsed="true">
+    <Position X="15.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABQAAAAAAAAAAABAAAIQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Engine\Entities\Actors\Actor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.Entities.Items.Food">
+    <Position X="13.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Items\Food.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RPG.Engine.Entities.Items.Pie" Collapsed="true">
+    <Position X="13.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Items\Food.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RPG.Engine.Entities.Item" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Items\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.Entities.Session" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAwAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Users\Sessions\Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.Entities.SessionManager" Collapsed="true">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAACAAAAAAAAAQAEAgAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Users\Sessions\SessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG.Engine.MenuClient&lt;T&gt;" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Engine\MenuClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="RPG.Engine.Entities.Ability" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Ability.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="RPG.Engine.Entities.HitDie" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAACAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\HitDie.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="RPG.Engine.Entities.StatBlock" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAQAAAAECAAAAAABBAAAAAAAAACAAAACA=</HashCode>
+      <FileName>Engine\Entities\StatBlock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="RPG.Engine.SeedGenerator" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAABAAAAABAAAAEAAAAAAgAAAAAAAEAAACAA=</HashCode>
+      <FileName>Engine\SeedGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="RPG.Engine.Entities.IEntity" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Interfaces\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RPG.Engine.Entities.IManage&lt;TEntity&gt;" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAAAAAQAAAAA=</HashCode>
+      <FileName>Engine\Interfaces\IManage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RPG.Engine.Entities.ISubType" Collapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Interfaces\ISubType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RPG.Engine.Interfaces.IHitDie" Collapsed="true">
+    <Position X="2.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Interfaces\IHitDie.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RPG.Engine.Interfaces.IName" Collapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Interfaces\IName.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RPG.Engine.Interfaces.INameable" Collapsed="true">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Interfaces\Inameable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="RPG.Engine.Entities.Actors.CreatureTypes.CreatureTypeKey" Collapsed="true">
+    <Position X="2.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAACIAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Actors\CreatureTypes\CreatureTypeKey.cs</FileName>
     </TypeIdentifier>
   </Enum>
+  <Enum Name="RPG.Engine.Entities.EntityKey" Collapsed="true">
+    <Position X="4" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\EntityKey.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RPG.Engine.Entities.Users.UserRole" Collapsed="true">
+    <Position X="2.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAAAA=</HashCode>
+      <FileName>Engine\Entities\Users\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RPG.Engine.CoreAbilityKey" Collapsed="true">
+    <Position X="0.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAEAAAAAAABBAAAAAAAAACAAAACA=</HashCode>
+      <FileName>Engine\CoreAbilityKey.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RPG.Engine.MainMenuOption" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Engine\MainMenuOptions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="RPG.Engine.Entities.NewSessionDelegate" Collapsed="true">
+    <Position X="0.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entities\Users\Sessions\SessionManager.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

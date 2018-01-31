@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    public abstract class EntityManager : Entity, IManage
+    public abstract class EntityManager : Entity
     {   
         //The Base class the EntityManager which you will note: is also a descendant of Entity. So, An EntityManager is an Entity...
         //      Entity <-----------------------------------------
@@ -48,5 +48,8 @@ namespace RPG.Engine.Entities
 
         public abstract void Create();
         public abstract void Create(double seed);
+        public abstract void Store();
+        public abstract Entity Retrieve();
+        public abstract void Destroy();
     }
 }

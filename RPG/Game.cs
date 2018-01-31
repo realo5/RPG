@@ -18,8 +18,11 @@ namespace RPG
 {
     static class Game
     {
+        //A userManager is used to create, load, save, destroy or edit Users
         private static UserManager _userManager;
+        //This specifies a path that will always be the same to the top-most level of our UserEnvironment
         public static string DBPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB";
+        //Enter main program...
         static void Main()
         {
             //We need a User to run the program...
@@ -32,13 +35,12 @@ namespace RPG
                 Directory.CreateDirectory(DBPath);
             //Either way, we still create a new UserManager with the path as it's argument.
             _userManager = new UserManager(DBPath);
-            Pie applePie = new Pie();
-            applePie.Presentation = "Plated";
-            applePie.Name = "Grandmothers Apple Pie";
+            
             //End Game
             Console.ReadLine();
         }
-
+        //This is just so we don't have to type _userManager.CurrentUser in order to return it's value.
+        //It is much more elegant to type GetCurrentUser()
         private static User GetCurrentUser() => _userManager.CurrentUser;
     }
 }
