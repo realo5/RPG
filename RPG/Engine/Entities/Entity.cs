@@ -19,14 +19,14 @@ namespace RPG.Engine.Entities
 
         public Entity()
         {
-
+            //OnCreated(this);
         }
         public Entity(double seed)
         {
             _seed = seed;
         }
 
-        
+        public abstract void OnCreated(object source);
     }
 
 }

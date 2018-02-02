@@ -61,15 +61,20 @@ namespace RPG.Engine.Entities.Actors
             Name = stringBuilder.ToString();
 
             Console.Write($"{Name}: ");
-            DisplayAbilities();
+            OnCreated(this);
         }
 
-        public void DisplayAbilities()
+        private void DisplayAbilities()
         {
             foreach (Ability ability in Abilities)
             {
                 Console.WriteLine($"{ability.Key}: {ability.Score}({ability.Modifier})");
             }
+        }
+
+        public override void OnCreated(object source)
+        {
+            DisplayAbilities();
         }
     }
 }

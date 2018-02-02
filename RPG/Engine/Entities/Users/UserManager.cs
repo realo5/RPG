@@ -9,48 +9,74 @@ using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities.Users
 {
-    class UserManager: EntityManager, IName, IManage<User>
+    class UserManager : EntityManager<User>, IManage<User>
     {
-        private List<User> _users = new List<User>();
-
-        public User CurrentUser
-        { get;set; }
+        private string _path;
+        public override string Path
+        {
+            get { return _path; }
+            set
+            {
+                _path = value + @"\Users.xml";
+            }
+        }
 
         public SeedGenerator SeedGenerator { get; set; }
 
-        public User this[string name]
-        {
-            get => _users.Find(user => user.Name == name);
-        }
-
-        public List<User> Users
-        {
-            get => _users;
-            set => _users = value;
-        }
-
         public UserManager() : base() { }
+
         //Here the userManager recieves a path to check if the Users.xml file exists within the
         //LoreDB directory
         public UserManager(string path) : base(path)
         {
-            //If that file does exist...
-            if (File.Exists(path + @"\Users.xml"))
-            {
-                //We retrieve users from the file location
-                RetrieveUsers(path);
-                //Now we create a userSelection from 
-                User userSelection = UserSelect();
-                //We then prove that we are the user by replicating a password
-                UserLogin(userSelection);
-            }
-            else
-                Create();
+            
         }
 
-        private void RetrieveUsers(string path)
+        #region PublicInterface
+        public override void Create()
         {
-            string usersPath = path + @"\Users.xml";
+            MenuClient<string> userNameClient = new MenuClient<string>();
+            userNameClient.Prompt = "User name";
+            string userName = userNameClient.GetUserInput();
+            MenuClient<UserRole> userRoleClient = new MenuClient<UserRole>();
+            userRoleClient.Prompt = "What is your role?";
+            foreach (UserRole role in Enum.GetValues(typeof(UserRole)).Cast<UserRole>().ToList<UserRole>())
+            {
+                userRoleClient.Selections.Add(role);
+            }
+            UserRole userRole = userRoleClient.GetUserSelection();
+            MenuClient<string> userPasswordClient = new MenuClient<string>()
+            {
+                Prompt = "Password"
+            };
+            string userPassword = userPasswordClient.GetUserInput();
+            User newUser = new User(userName, userRole, userPassword);
+            Contents.Add(newUser);
+            Current = newUser;
+        }
+        public override void Store()
+        {
+            XmlSerializer serializer =
+                new XmlSerializer(typeof(List<User>), new Type[] { typeof(User) });
+            string usersPath =
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB\Users.xml";
+            Console.WriteLine(usersPath);
+            StreamWriter writer =
+                new StreamWriter(usersPath);
+            serializer.Serialize(writer, Contents);
+        }
+        public User Select()
+        {
+            //We create an instance of our own MenuClient<T> object that I've enabled for use
+            //Any object may be assigned to the MenuClientConstructer call like this.
+            MenuClient<User> userMenu =
+                new MenuClient<User>();
+            userMenu.Prompt = "Select a User";
+            userMenu.Selections = Contents;
+            return userMenu.GetUserSelection();
+        }
+        public void Retrieve()
+        {
             //This accesses a serializer to create xml files from objects
             //in this case from a list of User objects.
             XmlSerializer serializer = new XmlSerializer(typeof(List<User>));
@@ -60,14 +86,29 @@ namespace RPG.Engine.Entities.Users
             //files. You should now be able to see a bit clearer the way that we have used
             //some of the objects that we've been creating here like the designers of the .NET
             //framework have built tools for us to use within itself.
-            using (Stream reader = new FileStream(usersPath, FileMode.Open))
+            using (Stream reader = new FileStream(Path, FileMode.Open))
             {
                 //Here we assign the return references of Users within a List from a reader
                 //object that has been assigned the users path as seen above.
-                Users = (List<User>)serializer.Deserialize(reader);
+                Contents = (List<User>)serializer.Deserialize(reader);
             }
         }
-
+        public override void Edit()
+        {
+            //First we get the user input for a name.
+            string userName = AssignName();
+            //Then we allow the selection of a role.
+            UserRole userRole = AssignUserRole();
+            string userPassword = AssignPassword();
+            //Then we construct the desired object by passing our arguments to the User constructor.
+            Current = new User(userName, userRole, userPassword);
+        }
+        public void Destroy()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+        #region PrivateFunctions
         private void UserLogin(User userSelection)
         {
             MenuClient<string> stringClient = new MenuClient<string>();
@@ -86,57 +127,23 @@ namespace RPG.Engine.Entities.Users
                 {
                     //Otherwise, the only alternative is that your entry is == userSelection.Password
                     //then we assign your selection to the CurrentUser Property of the UserManager
-                    CurrentUser = userSelection;
+                    Current = userSelection;
                     //and your password was true after all so...
                     passwordValid = true;
                 }
             }   
         }
 
-        public override void Create(double seed)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Create()
-        {
-            //First we get the user input for a name.
-            string userName = AssignName();
-            //Then we allow the selection of a role.
-            UserRole userRole = AssignUserRole();
-            string userPassword = AssignPassword();
-            //Then we construct the desired object by passing our arguments to the User constructor.
-            User newUser = new User(userName, userRole, userPassword);
-            //Adding the new user to a collection of users
-            Users.Add(newUser);
-            //We assign a newly created user to the CurrentUser property for ease of access.
-            CurrentUser = newUser;
-            //Otherwise we might have to do Users[indexOfParticularUser] in order to find our required element of the list.
-            //Or...which we will do in some occassions, user = Users.Where(u => u.Name == "Somenamewe Arelookingfor");
-            //Finally, we write our objects to persistence
-            UpdateUsers();
-        }
-        //this method right here...
-        private User UserSelect()
-        {
-            //We create an instance of our own MenuClient<T> object that I've enabled for use
-            //Any object may be assigned to the MenuClientConstructer call like this.
-            MenuClient<User> userMenu =
-                new MenuClient<User>();
-            userMenu.Prompt = "Select a User";
-            userMenu.Selections = Users;
-            return userMenu.GetUserSelection();
-        }
         //This method along with the AssignUserRole were just loose functions in the create method but we have extracted the to 
         //reduce method bloat...which to be honest just makes things hard to read. This keeps things in a very obvious grouping.
-        public string AssignName()
+        private string AssignName()
         {
             MenuClient<string> userStringClient = new MenuClient<string>();
             userStringClient.Prompt = "Enter User name";
             return userStringClient.GetUserInput();
         }
 
-        public string AssignPassword()
+        private string AssignPassword()
         {
             MenuClient<string> userStringClient = new MenuClient<string>();
             userStringClient.Prompt = "Password";
@@ -154,7 +161,7 @@ namespace RPG.Engine.Entities.Users
             throw new Exception("Password Invalid");
         }
 
-        public UserRole AssignUserRole()
+        private UserRole AssignUserRole()
         {
             MenuClient<UserRole> userRoleClient = new MenuClient<UserRole>();
             userRoleClient.Prompt = "What shall be your role?";
@@ -165,36 +172,12 @@ namespace RPG.Engine.Entities.Users
             return userRoleClient.GetUserSelection();
         }
 
-        private void UpdateUsers()
+        public override void OnCreated(object source)
         {
-            XmlSerializer serializer = 
-                new XmlSerializer(typeof(List<User>), new Type[] {typeof(User)});
-            string usersPath = 
-                Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB\Users.xml";
-            Console.WriteLine(usersPath);
-            StreamWriter writer =
-                new StreamWriter(usersPath);
-            serializer.Serialize(writer, Users);
+            Console.WriteLine(Current.Name + " created!");
         }
 
-        public override void Store()
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public override User Retrieve()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Destroy()
-        {
-            throw new NotImplementedException();
-        }
-
-        User IManage<User>.Retrieve()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

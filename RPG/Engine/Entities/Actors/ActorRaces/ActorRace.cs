@@ -16,6 +16,9 @@ namespace RPG.Engine.Entities.Actors.ActorRaces
         {
             this.CreatureType = type;
         }
-
+        public override void OnCreated(object source)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

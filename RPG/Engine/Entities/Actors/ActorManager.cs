@@ -7,24 +7,55 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities.Actors
 {
-    class ActorManager : EntityManager
+    class ActorManager : EntityManager<Actor>, IManage<Actor>
     {
         public ActorManager() : base() { }
         public ActorManager(double seed) : base()
         {
-            Create(seed);
+            //Create(seed);
         }
 
         public override void Create()
         {
-            Current = new Actor();
+            Actor newActor = new Actor();
+            Contents.Add(newActor);
+            Current = newActor;
         }
 
-        public override void Create(double seed)
+        //public override void Create(double seed)
+        //{
+        //    seed = new Random((int)seed).Next();
+        //    Current = new Actor(seed);
+        //}
+
+        public void Destroy()
         {
-            seed = new Random((int)seed).Next();
-            Current = new Actor(seed);
+            throw new NotImplementedException();
         }
-        
+
+        public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnCreated(object source)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Retrieve()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Actor Select()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Store()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

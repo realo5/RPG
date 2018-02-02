@@ -14,7 +14,11 @@ namespace RPG.Engine.Entities
         //Save it
         void Store();
         //Load it
-        TEntity Retrieve();
+        void Retrieve();
+        //Select it
+        TEntity Select();
+        //Edit it
+        void Edit();
         //Destroy it
         void Destroy();
     }

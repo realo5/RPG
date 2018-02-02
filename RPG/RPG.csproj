@@ -60,8 +60,8 @@
     <Compile Include="Engine\Entities\Items\Food.cs" />
     <Compile Include="Engine\Entities\Items\Goods\Beverages\Wines\Wine.cs" />
     <Compile Include="Engine\Entities\Items\Item.cs" />
-    <Compile Include="Engine\Entities\Users\Sessions\Session.cs" />
-    <Compile Include="Engine\Entities\Users\Sessions\SessionManager.cs" />
+    <Compile Include="Engine\Entities\Sessions\Session.cs" />
+    <Compile Include="Engine\Entities\Sessions\SessionManager.cs" />
     <Compile Include="Engine\Entities\StatBlock.cs" />
     <Compile Include="Engine\Entities\Users\Player.cs" />
     <Compile Include="Engine\Entities\Users\StoryTeller.cs" />

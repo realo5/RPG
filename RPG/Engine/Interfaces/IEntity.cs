@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    interface IEntity
+    public interface IEntity
     {
 
     }

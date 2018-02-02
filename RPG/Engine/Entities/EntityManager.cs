@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
-    public abstract class EntityManager : Entity
+    public class EntityEventArgs<TEntity> : EventArgs
+        {
+            public TEntity Entity { get; set; }
+        }
+
+    public abstract class EntityManager<TEntity> : Entity where TEntity : Entity, new()
     {   
         //The Base class the EntityManager which you will note: is also a descendant of Entity. So, An EntityManager is an Entity...
         //      Entity <-----------------------------------------
@@ -16,40 +22,48 @@ namespace RPG.Engine.Entities
         //        but... ^
         //               |
         //           ActorManager is handled like a typeof(Entity) from within another Manager.
-        private List<Entity> _contents = new List<Entity>();
-        public List<Entity> Contents
+        private List<TEntity> _contents = new List<TEntity>();
+
+        public List<TEntity> Contents
         {
             get => _contents;
-            set => _contents = value;
-        }
+            set
+            {
+                _contents = value;
+            }
+        }   
 
-        public Entity Current
+        public TEntity Current
         { get; set; }
 
-        public Entity this[int index]
+        public TEntity this[int index]
         {
             get => _contents[index];
         }
 
+        public virtual string Path
+        {
+            get; set;
+        }
+
         public EntityManager()
         {
-
+            
         }
 
         public EntityManager(double seed)
-        {
-            Create(seed);
-        }
-
-        public EntityManager(string path)
         {
 
         }
 
         public abstract void Create();
-        public abstract void Create(double seed);
+        public abstract void Edit();
         public abstract void Store();
-        public abstract Entity Retrieve();
-        public abstract void Destroy();
+
+        public EntityManager(string path)
+        {
+            Path = path;
+            //Still trying to get a working event chain here...
+        }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RPG.Engine.Entities;
+using RPG.Engine.Entities.Sessions;
 using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities.Users
@@ -41,12 +42,13 @@ namespace RPG.Engine.Entities.Users
             set { _password = value; }
         }
 
-        private SessionManager _sessionManager;
-        public Session CurrentSession
+        public string SessionsPath
         {
-            get; set;
+            get;
+            set;
         }
-        string INameable.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        private SessionManager _sessionManager;
 
         public User() : base()
         {
@@ -55,14 +57,29 @@ namespace RPG.Engine.Entities.Users
 
         public User(string name, UserRole role, string password) : base()
         {
-            //Standard property assignement using the arguments passed in implementation
+            //Standard property assignment using the arguments passed in implementation
+
             Name = name;
             Role = role;
             Password = password;
-            _sessionManager = new SessionManager(this);
-            
+            ////We need to trigger the creation of a new SessionManager here
+            //string sessionsPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB\" + $"{Name}Sessions.xml";
+            //_sessionManager = new SessionManager(sessionsPath);
+
+            //if (File.Exists(sessionsPath))
+            //{
+            //    _sessionManager.Retrieve();
+            //}
+            //else
+            //    _sessionManager.Create();
         }
 
-        public override string ToString() => this.Role + this.Name;
+        public override void OnCreated(object source)
+        {
+            Console.WriteLine(ToString() + " created!");
+        }
+
+        public override string ToString() => 
+            this.Role + " " + this.Name;
     }
 }

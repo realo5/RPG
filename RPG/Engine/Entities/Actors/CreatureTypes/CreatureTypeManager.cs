@@ -7,17 +7,33 @@ using RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes;
 
 namespace RPG.Engine.Entities.Actors.CreatureTypes
 {
-    class CreatureTypeManager : EntityManager
+    class CreatureTypeManager : EntityManager<CreatureType>, IManage<CreatureType>
     {
-        private List<CreatureType> _creatureTypes;
-        public CreatureTypeManager()
+        public CreatureTypeManager() : base()
         {
 
         }
-        public void Initialize()
+        public CreatureType Select()
         {
-
+            throw new NotImplementedException();
         }
+        public void Retrieve()
+        {
+            throw new NotImplementedException();
+        }
+        public void Destroy()
+        {
+            throw new NotImplementedException();
+        }
+        public override void Edit()
+        {
+            throw new NotImplementedException();
+        }
+        public override void Store()
+        {
+            throw new NotImplementedException();
+        }
+
         public CreatureType Retrieve(CreatureTypeKey key)
         {
             CreatureType creatureType;
@@ -53,12 +69,12 @@ namespace RPG.Engine.Entities.Actors.CreatureTypes
 
         }
 
-        public override void Create()
+        public override void OnCreated(object source)
         {
-            throw new Exception();
+            throw new NotImplementedException();
         }
 
-        public override void Create(double seed)
+        public override void Create()
         {
             throw new NotImplementedException();
         }

@@ -8,6 +8,9 @@ namespace RPG.Engine.Entities
 {
     public class Item : Entity
     {
-
+        public override void OnCreated(object source)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -10,9 +10,17 @@ namespace RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes
     public class CreatureType : Entity
     {
         public HitDie BaseHitDie{ get; set; }
+        public CreatureType() : base()
+        {
+
+        }
         public CreatureType(StatBlock statBlock)
         {
             BaseHitDie = statBlock.HD;
+        }
+        public override void OnCreated(object source)
+        {
+            throw new NotImplementedException();
         }
     }
 }

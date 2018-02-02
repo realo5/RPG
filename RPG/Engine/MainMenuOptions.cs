@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine
 {
-    enum MainMenuOption
+    enum MainMenuOptions
     {
         New = 0,
         Exit = 1
