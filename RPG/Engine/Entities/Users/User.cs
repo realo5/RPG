@@ -74,11 +74,6 @@ namespace RPG.Engine.Entities.Users
             //    _sessionManager.Create();
         }
 
-        public override void OnCreated(object source)
-        {
-            Console.WriteLine(ToString() + " created!");
-        }
-
         public override string ToString() => 
             this.Role + " " + this.Name;
     }

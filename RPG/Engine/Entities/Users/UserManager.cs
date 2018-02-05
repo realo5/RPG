@@ -53,6 +53,7 @@ namespace RPG.Engine.Entities.Users
             User newUser = new User(userName, userRole, userPassword);
             Contents.Add(newUser);
             Current = newUser;
+            OnEntityCreated(newUser);
         }
         public override void Store()
         {
@@ -171,12 +172,6 @@ namespace RPG.Engine.Entities.Users
             }
             return userRoleClient.GetUserSelection();
         }
-
-        public override void OnCreated(object source)
-        {
-            Console.WriteLine(Current.Name + " created!");
-        }
-
         #endregion
 
     }

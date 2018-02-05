@@ -16,7 +16,6 @@ namespace RPG.Engine.Entities.Sessions
             get => _dateTime;
             set => _dateTime = value;
         }
-        public event NewSessionDelegate SessionCreated;
 
         public enum SessionKey
         {
@@ -45,9 +44,16 @@ namespace RPG.Engine.Entities.Sessions
             //Console.WriteLine($"Session started by {user.Role} {user.Name} at {this.DateTime}.");
         }
 
-        public override void OnCreated(object source)
+        public virtual void OnEntityCreated(object source,
+            EntityCreatedEventArgs args)
         {
-            throw new NotImplementedException();
+            Type type = args.Entity.GetType();
+            string message;
+            if (type == typeof(User))
+                message = $"Created {type.Name} {args.Entity.ToString()} by {source.ToString()}!";
+            else
+                throw new Exception("Did not catch User");
+            Console.WriteLine(message);
         }
     }
 }

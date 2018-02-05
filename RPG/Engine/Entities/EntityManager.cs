@@ -4,13 +4,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RPG.Engine.Entities.Users;
 
 namespace RPG.Engine.Entities
 {
-    public class EntityEventArgs<TEntity> : EventArgs
-        {
-            public TEntity Entity { get; set; }
-        }
 
     public abstract class EntityManager<TEntity> : Entity where TEntity : Entity, new()
     {   
@@ -46,6 +43,14 @@ namespace RPG.Engine.Entities
             get; set;
         }
 
+        public event EntityEventHandler EntityCreated;
+
+        protected virtual void OnEntityCreated(Entity entity)
+        {
+            EntityCreated?.Invoke
+                (this, new EntityCreatedEventArgs(entity));
+        }
+
         public EntityManager()
         {
             
@@ -55,9 +60,17 @@ namespace RPG.Engine.Entities
         {
 
         }
-
-        public abstract void Create();
+        //Create default Entity
+        public virtual void Create()
+        {
+            TEntity entity = new TEntity();
+            _contents.Add(entity);
+            Current = entity;
+            //This fires the event.
+            OnEntityCreated(entity);
+        }
         public abstract void Edit();
+        //Store entire collection
         public abstract void Store();
 
         public EntityManager(string path)

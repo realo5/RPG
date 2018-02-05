@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 namespace RPG.Engine.Entities
 {
+    public class EntityCreatedEventArgs : EventArgs
+    {
+        public Entity Entity { get; set; }
+        public EntityCreatedEventArgs(Entity entity)
+        {
+            Entity = entity;
+        }
+    }
+
+    public delegate void EntityEventHandler
+        (object source, EntityCreatedEventArgs args);
+
     public abstract class Entity : IEntity
     {
         private double _seed;
@@ -19,14 +31,19 @@ namespace RPG.Engine.Entities
 
         public Entity()
         {
-            //OnCreated(this);
+
         }
+
         public Entity(double seed)
         {
             _seed = seed;
         }
 
-        public abstract void OnCreated(object source);
+        public virtual void OnCreated(object source)
+        {
+            Console.WriteLine
+                ($"{this.ToString()} created by {source}!");
+        }
     }
 
 }
