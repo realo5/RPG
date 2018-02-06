@@ -90,7 +90,9 @@ namespace RPG
                 //_userManager.Store();
 
                 user = _userManager.Current;
+                session = _sessionManager.Current;
                 Console.WriteLine($"Welcome to the Lore {user.Name}");
+                Console.WriteLine($"{session.DateTime}");
             }
         }
         //Enter main program...

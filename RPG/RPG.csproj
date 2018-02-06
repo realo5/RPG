@@ -69,6 +69,8 @@
     <Compile Include="Engine\Entities\Users\UserManager.cs" />
     <Compile Include="Engine\Entities\Users\UserRole_deposed.cs" />
     <Compile Include="Engine\Entities\Users\UserRole.cs" />
+    <Compile Include="Engine\EntityCreatedEventHandler.cs" />
+    <Compile Include="Engine\EntityCreatedEventArgs.cs" />
     <Compile Include="Engine\Interfaces\IEntity.cs" />
     <Compile Include="Engine\Interfaces\IHitDie.cs" />
     <Compile Include="Engine\Interfaces\IManage.cs" />

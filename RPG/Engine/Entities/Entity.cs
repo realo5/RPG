@@ -7,18 +7,6 @@ using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities
 {
-    public class EntityCreatedEventArgs : EventArgs
-    {
-        public Entity Entity { get; set; }
-        public EntityCreatedEventArgs(Entity entity)
-        {
-            Entity = entity;
-        }
-    }
-
-    public delegate void EntityCreatedEventHandler
-        (object source, EntityCreatedEventArgs args);
-
     public abstract class Entity : IEntity
     {
         //All Entities are Publishers
