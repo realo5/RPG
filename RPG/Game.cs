@@ -93,6 +93,8 @@ namespace RPG
                 session = _sessionManager.Current;
                 Console.WriteLine($"Welcome to the Lore {user.Name}");
                 Console.WriteLine($"{session.DateTime}");
+
+                user.CreateNewActor();
             }
         }
         //Enter main program...

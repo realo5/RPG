@@ -37,18 +37,21 @@ namespace RPG.Engine.Entities.Users
 
         protected virtual void OnUserCreated(object source, EntityCreatedEventArgs args)
         {
-            if (UserCreated != null)
-                UserCreated(source, args);
+            UserCreated?.Invoke(source, args);
         }
 
         #region PublicInterface
         public override void Create()
         {
-            MenuClient<string> userNameClient = new MenuClient<string>();
-            userNameClient.Prompt = "User name";
+            MenuClient<string> userNameClient = new MenuClient<string>
+            {
+                Prompt = "User name"
+            };
             string userName = userNameClient.GetUserInput();
-            MenuClient<UserRole> userRoleClient = new MenuClient<UserRole>();
-            userRoleClient.Prompt = "What is your role?";
+            MenuClient<UserRole> userRoleClient = new MenuClient<UserRole>
+            {
+                Prompt = "What is your role?"
+            };
             foreach (UserRole role in Enum.GetValues(typeof(UserRole)).Cast<UserRole>().ToList<UserRole>())
             {
                 userRoleClient.Selections.Add(role);
@@ -82,9 +85,11 @@ namespace RPG.Engine.Entities.Users
             //We create an instance of our own MenuClient<T> object that I've enabled for use
             //Any object may be assigned to the MenuClientConstructer call like this.
             MenuClient<User> userMenu =
-                new MenuClient<User>();
-            userMenu.Prompt = "Select a User";
-            userMenu.Selections = Contents;
+                new MenuClient<User>
+                {
+                    Prompt = "Select a User",
+                    Selections = Contents
+                };
             return userMenu.GetUserSelection();
         }
         public void Retrieve()
@@ -123,8 +128,10 @@ namespace RPG.Engine.Entities.Users
         #region PrivateFunctions
         private void UserLogin(User userSelection)
         {
-            MenuClient<string> stringClient = new MenuClient<string>();
-            stringClient.Prompt = "Please login with your password";
+            MenuClient<string> stringClient = new MenuClient<string>
+            {
+                Prompt = "Please login with your password"
+            };
             bool passwordValid = false;
             //Here we enter a while loop until a valid password is entered
             while(passwordValid == false)
@@ -150,15 +157,19 @@ namespace RPG.Engine.Entities.Users
         //reduce method bloat...which to be honest just makes things hard to read. This keeps things in a very obvious grouping.
         private string AssignName()
         {
-            MenuClient<string> userStringClient = new MenuClient<string>();
-            userStringClient.Prompt = "Enter User name";
+            MenuClient<string> userStringClient = new MenuClient<string>
+            {
+                Prompt = "Enter User name"
+            };
             return userStringClient.GetUserInput();
         }
 
         private string AssignPassword()
         {
-            MenuClient<string> userStringClient = new MenuClient<string>();
-            userStringClient.Prompt = "Password";
+            MenuClient<string> userStringClient = new MenuClient<string>
+            {
+                Prompt = "Password"
+            };
             bool passwordValid = false;
             string userPassword;
             while(!passwordValid)
@@ -175,8 +186,10 @@ namespace RPG.Engine.Entities.Users
 
         private UserRole AssignUserRole()
         {
-            MenuClient<UserRole> userRoleClient = new MenuClient<UserRole>();
-            userRoleClient.Prompt = "What shall be your role?";
+            MenuClient<UserRole> userRoleClient = new MenuClient<UserRole>
+            {
+                Prompt = "What shall be your role?"
+            };
             foreach (UserRole roleKey in Enum.GetValues(typeof(UserRole)).Cast<UserRole>().ToList<UserRole>())
             {
                 userRoleClient.Selections.Add(roleKey);

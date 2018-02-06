@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 using RPG.Engine.Entities.Sessions;
 using RPG.Engine.Interfaces;
+using RPG.Engine.Entities.Actors;
 
 namespace RPG.Engine.Entities.Users
 {
@@ -48,8 +50,6 @@ namespace RPG.Engine.Entities.Users
             set;
         }
 
-        private SessionManager _sessionManager;
-
         public User() : base()
         {
 
@@ -72,9 +72,20 @@ namespace RPG.Engine.Entities.Users
             //}
             //else
             //    _sessionManager.Create();
+            
         }
 
         public override string ToString() => 
             this.Role + " " + this.Name;
+
+        public void CreateNewActor()
+        {
+            ActorManager actorManager = new ActorManager();
+            actorManager.Create();
+            Actor newActor = actorManager.Current;
+            OnEntityEvent(this, new EntityEventArgs(this.GetType().GetMethod("CreateNewActor")));
+        }
+
+        
     }
 }

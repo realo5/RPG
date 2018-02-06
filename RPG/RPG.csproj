@@ -54,6 +54,7 @@
     <Compile Include="Engine\Entities\Actors\CreatureTypes\SubTypes\SubType.cs" />
     <Compile Include="Engine\Entities\Actors\Monsters\MonsterManager.cs" />
     <Compile Include="Engine\Entities\Entity.cs" />
+    <Compile Include="Engine\EntityEventArgs.cs" />
     <Compile Include="Engine\Entities\EntityKey.cs" />
     <Compile Include="Engine\Entities\EntityManager.cs" />
     <Compile Include="Engine\Entities\HitDie.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Engine\Entities\Users\UserRole.cs" />
     <Compile Include="Engine\EntityCreatedEventHandler.cs" />
     <Compile Include="Engine\EntityCreatedEventArgs.cs" />
+    <Compile Include="Engine\EntityEventHandler.cs" />
     <Compile Include="Engine\Interfaces\IEntity.cs" />
     <Compile Include="Engine\Interfaces\IHitDie.cs" />
     <Compile Include="Engine\Interfaces\IManage.cs" />

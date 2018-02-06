@@ -7,8 +7,8 @@ using RPG.Engine.Entities;
 
 namespace RPG.Engine.Interfaces
 {
-    interface IPublish
-    {
-        event EntityCreatedEventHandler Created;
-    }
+    //interface IPublish
+    //{
+    //    event EntityCreatedEventHandler Created;
+    //}
 }

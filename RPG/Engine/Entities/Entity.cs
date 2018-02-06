@@ -21,10 +21,18 @@ namespace RPG.Engine.Entities
             return GetType().Name;
         }
 
+        public event EntityEventHandler EntityEvent;
+
+        protected virtual void OnEntityEvent(object source, EntityEventArgs args)
+        {
+            EntityEvent?.Invoke(source, args);
+        }
+
         public Entity()
         {
             //When an entity is created we want the manager
             //to fire off a Session if the Entity is ISessionable.
+            
         }
 
         public Entity(double seed)

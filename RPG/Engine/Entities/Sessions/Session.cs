@@ -8,9 +8,10 @@ using RPG.Engine.Entities.Users;
 namespace RPG.Engine.Entities.Sessions
 {
     //A session should encapsulate everything that a User does.
+    [Serializable]
     public class Session : Entity
     {
-        public User Publisher { get; set; }
+        public User User { get; set; }
 
         private DateTime _dateTime;
         public DateTime DateTime
@@ -30,10 +31,10 @@ namespace RPG.Engine.Entities.Sessions
             get;set;
         }
 
-        public Session() : base()
-        {
+        public event EntityEventHandler UserAction;
 
-        }
+        public Session() : base()
+        { }
 
         public Session(EntityCreatedEventArgs args)
         {
@@ -42,7 +43,14 @@ namespace RPG.Engine.Entities.Sessions
             Console.WriteLine
                 (args.Entity.ToString() + " created by " +
                 this.ToString() + "!");
+            args.Entity.EntityEvent +=
+                OnUserEvent;
+        }
 
+        public void OnUserEvent(object source, EntityEventArgs args)
+        {
+            Console.WriteLine
+                ($"{source.ToString()} => {args.Action.Name} {args.Action.GetMethodBody()}");
         }
 
         //public virtual void OnCreated(object source,
