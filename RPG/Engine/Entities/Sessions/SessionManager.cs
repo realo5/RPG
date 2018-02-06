@@ -6,11 +6,10 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
 using RPG.Engine.Entities.Users;
+using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities.Sessions
 {
-    public delegate void NewSessionDelegate(Session session);
-
     public sealed class SessionManager : EntityManager<Session>, IManage<Session>
     {
         public string SessionsPath
@@ -20,6 +19,9 @@ namespace RPG.Engine.Entities.Sessions
         //We move to the default parameterless constructor for the SessionManager which pulls us out to...
         public SessionManager() : base()
         {
+            //when an ISessionable entity is created
+            //We must call our OnISessionable()
+
         }
 
         public SessionManager(string path) : base()
@@ -37,9 +39,9 @@ namespace RPG.Engine.Entities.Sessions
             }
         }
 
-        public void OnSessionCreated()
+        public void OnUserCreated(object source, EntityCreatedEventArgs args)
         {
-
+            Create(args);
         }
 
         public override void Store()
@@ -65,14 +67,23 @@ namespace RPG.Engine.Entities.Sessions
             throw new NotImplementedException();
         }
 
-        public override void Create()
+        public void Create(EntityCreatedEventArgs args)
         {
-            throw new NotImplementedException();
+            Session newSession = new Session(args);
+            Current = newSession;
+            Contents.Add(newSession);
+            //OnCreated(newSession);
         }
 
-        public override void OnCreated(object source)
+        public void OnUserCreated()
         {
-            throw new NotImplementedException();
+
         }
+
+        //public void OnEntityCreated(object source, EntityCreatedEventArgs args)
+        //{
+        //    if (args.Entity.GetType() == typeof(ISessionable))
+        //        this.Create(args);
+        //}
     }
 }

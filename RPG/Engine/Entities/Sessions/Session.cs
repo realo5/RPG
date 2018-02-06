@@ -10,6 +10,8 @@ namespace RPG.Engine.Entities.Sessions
     //A session should encapsulate everything that a User does.
     public class Session : Entity
     {
+        public User Publisher { get; set; }
+
         private DateTime _dateTime;
         public DateTime DateTime
         {
@@ -30,30 +32,29 @@ namespace RPG.Engine.Entities.Sessions
 
         public Session() : base()
         {
-            //How do we get user here?
-            DateTime = DateTime.Now;
-            //if (user.Role == UserRole.Player)
-            //{
-            //    this.SessionType = SessionKey.PlayerSession;
-            //}
-            //else if (user.Role == UserRole.StoryTeller)
-            //{
-            //    this.SessionType = SessionKey.StoryTellerSession;
-            //}
-            //SessionOwner = user;
-            //Console.WriteLine($"Session started by {user.Role} {user.Name} at {this.DateTime}.");
+
         }
 
-        public virtual void OnEntityCreated(object source,
-            EntityCreatedEventArgs args)
+        public Session(EntityCreatedEventArgs args)
         {
-            Type type = args.Entity.GetType();
-            string message;
-            if (type == typeof(User))
-                message = $"Created {type.Name} {args.Entity.ToString()} by {source.ToString()}!";
-            else
-                throw new Exception("Did not catch User");
-            Console.WriteLine(message);
+            //How do we get user here?
+            DateTime = DateTime.Now;
+            Console.WriteLine
+                (args.Entity.ToString() + " created by " +
+                this.ToString() + "!");
+
         }
+
+        //public virtual void OnCreated(object source,
+        //    EntityCreatedEventArgs args)
+        //{
+        //    Type type = args.Entity.GetType();
+        //    string message;
+        //    if (type == typeof(User))
+        //        message = $"Created {type.Name} {args.Entity.ToString()} by {source.ToString()}!";
+        //    else
+        //        throw new Exception("Did not catch User");
+        //    Console.WriteLine(message);
+        //}
     }
 }

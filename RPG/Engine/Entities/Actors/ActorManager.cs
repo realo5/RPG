@@ -38,11 +38,6 @@ namespace RPG.Engine.Entities.Actors
             throw new NotImplementedException();
         }
 
-        public override void OnCreated(object source)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Retrieve()
         {
             throw new NotImplementedException();

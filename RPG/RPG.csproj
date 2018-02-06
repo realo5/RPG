@@ -74,6 +74,8 @@
     <Compile Include="Engine\Interfaces\IManage.cs" />
     <Compile Include="Engine\Interfaces\IName.cs" />
     <Compile Include="Engine\Interfaces\Inameable.cs" />
+    <Compile Include="Engine\Interfaces\IPublish.cs" />
+    <Compile Include="Engine\Interfaces\ISessionable.cs" />
     <Compile Include="Engine\Interfaces\ISubType.cs" />
     <Compile Include="Engine\MainMenuOptions.cs" />
     <Compile Include="Engine\MenuClient.cs" />

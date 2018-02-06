@@ -18,9 +18,5 @@ namespace RPG.Engine.Entities.Actors.ActorRaces.CreatureTypes
         {
             BaseHitDie = statBlock.HD;
         }
-        public override void OnCreated(object source)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

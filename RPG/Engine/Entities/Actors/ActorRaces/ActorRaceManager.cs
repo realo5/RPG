@@ -32,11 +32,6 @@ namespace RPG.Engine.Entities.Actors.ActorRaces
             throw new NotImplementedException();
         }
 
-        public override void OnCreated(object source)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Retrieve()
         {
             throw new NotImplementedException();

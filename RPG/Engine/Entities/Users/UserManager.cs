@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using RPG.Engine.Entities;
 using RPG.Engine.Interfaces;
 
 namespace RPG.Engine.Entities.Users
@@ -21,6 +22,8 @@ namespace RPG.Engine.Entities.Users
             }
         }
 
+        public event EntityCreatedEventHandler UserCreated;
+
         public SeedGenerator SeedGenerator { get; set; }
 
         public UserManager() : base() { }
@@ -30,6 +33,12 @@ namespace RPG.Engine.Entities.Users
         public UserManager(string path) : base(path)
         {
             
+        }
+
+        protected virtual void OnUserCreated(object source, EntityCreatedEventArgs args)
+        {
+            if (UserCreated != null)
+                UserCreated(source, args);
         }
 
         #region PublicInterface
@@ -53,7 +62,9 @@ namespace RPG.Engine.Entities.Users
             User newUser = new User(userName, userRole, userPassword);
             Contents.Add(newUser);
             Current = newUser;
-            OnEntityCreated(newUser);
+            OnUserCreated
+                (this, new EntityCreatedEventArgs(newUser));
+            //OnEntityCreated(newUser);
         }
         public override void Store()
         {

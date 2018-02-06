@@ -16,6 +16,7 @@ namespace RPG
     {
         //A userManager is used to create, load, save, destroy or edit Users
         private static UserManager _userManager;
+        private static SessionManager _sessionManager;
         
         //This specifies a path that will always be the same to the top-most level of our UserEnvironment
         public static string DBPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\LoreDB";
@@ -45,12 +46,16 @@ namespace RPG
             _userManager = new UserManager(DBPath);
             Console.WriteLine("Preparing reference for user...");
             User user;
-            Session session = new Session();
+            Session session;
+            _userManager = new UserManager();
+            _sessionManager = new SessionManager();
+
             Console.WriteLine($"Checking for {_userManager.Path}...");
             //Event chaining
-            _userManager.EntityCreated += 
-                session.OnEntityCreated;
-            
+            //When a User is Created we want SessionManager
+            //to create new Session(User)
+            _userManager.UserCreated +=
+                _sessionManager.OnUserCreated;
 
             //DISABLED FOR TESTING WITHOUT FILEPERSISTENCE
             //RE-ENABLE BEFORE RELEASE BUILD.

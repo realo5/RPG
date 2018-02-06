@@ -61,7 +61,7 @@ namespace RPG.Engine.Entities.Actors
             Name = stringBuilder.ToString();
 
             Console.Write($"{Name}: ");
-            OnCreated(this);
+            //OnCreated(this);
         }
 
         private void DisplayAbilities()
@@ -72,9 +72,9 @@ namespace RPG.Engine.Entities.Actors
             }
         }
 
-        public override void OnCreated(object source)
-        {
-            DisplayAbilities();
-        }
+        //public override void OnCreated(Entity source)
+        //{
+        //    DisplayAbilities();
+        //}
     }
 }

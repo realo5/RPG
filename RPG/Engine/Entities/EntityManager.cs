@@ -43,13 +43,13 @@ namespace RPG.Engine.Entities
             get; set;
         }
 
-        public event EntityEventHandler EntityCreated;
+        //public event EntityEventHandler EntityCreated;
 
-        protected virtual void OnEntityCreated(Entity entity)
-        {
-            EntityCreated?.Invoke
-                (this, new EntityCreatedEventArgs(entity));
-        }
+        //protected virtual void OnEntityCreated(Entity entity)
+        //{
+        //    EntityCreated?.Invoke
+        //        (this, new EntityCreatedEventArgs(entity));
+        //}
 
         public EntityManager()
         {
@@ -67,7 +67,7 @@ namespace RPG.Engine.Entities
             _contents.Add(entity);
             Current = entity;
             //This fires the event.
-            OnEntityCreated(entity);
+            //OnEntityCreated(entity);
         }
         public abstract void Edit();
         //Store entire collection
