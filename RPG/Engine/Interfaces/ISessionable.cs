@@ -10,5 +10,6 @@ namespace RPG.Engine.Interfaces
     public interface ISessionable
     {
         SessionManager SessionManager { get; set; }
+        Session CurrentSession { get; }
     }
 }

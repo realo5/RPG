@@ -12,7 +12,7 @@ using RPG.Engine.Entities.Actors;
 namespace RPG.Engine.Entities.Users
 {
     [Serializable]
-    public class User : Entity, INameable
+    public class User : Entity, INameable, ISessionable
     {
         private string _name;
         public string Name
@@ -50,6 +50,19 @@ namespace RPG.Engine.Entities.Users
             set;
         }
 
+        public SessionManager SessionManager
+        {
+            get;set;
+        }
+
+        public Session CurrentSession
+        {
+            //We only have a getter here as we have our 
+            //CurrentSession value set by the SessionManager
+            //before it event enters this class instance.
+            get => SessionManager.Current;
+        }
+
         public User() : base()
         {
 
@@ -83,6 +96,9 @@ namespace RPG.Engine.Entities.Users
             ActorManager actorManager = new ActorManager();
             actorManager.Create();
             Actor newActor = actorManager.Current;
+            //Awaiting further procedure for this action.
+
+
             OnEntityEvent(this, new EntityEventArgs(this.GetType().GetMethod("CreateNewActor")));
         }
 

@@ -81,6 +81,7 @@
     <Compile Include="Engine\Interfaces\IPublish.cs" />
     <Compile Include="Engine\Interfaces\ISessionable.cs" />
     <Compile Include="Engine\Interfaces\ISubType.cs" />
+    <Compile Include="Engine\Logger.cs" />
     <Compile Include="Engine\MainMenuOptions.cs" />
     <Compile Include="Engine\MenuClient.cs" />
     <Compile Include="Engine\SeedGenerator.cs" />

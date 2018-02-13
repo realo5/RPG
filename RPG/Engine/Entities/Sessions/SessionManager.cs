@@ -16,6 +16,9 @@ namespace RPG.Engine.Entities.Sessions
         {
             get; set;
         }
+
+        public event EntityCreatedEventHandler SessionCreated;
+
         //We move to the default parameterless constructor for the SessionManager which pulls us out to...
         public SessionManager() : base()
         {

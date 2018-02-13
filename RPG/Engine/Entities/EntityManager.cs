@@ -9,7 +9,7 @@ using RPG.Engine.Entities.Users;
 namespace RPG.Engine.Entities
 {
 
-    public abstract class EntityManager<TEntity> : Entity where TEntity : Entity, new()
+    public class EntityManager<TEntity> : Entity where TEntity : Entity, new()
     {   
         //The Base class the EntityManager which you will note: is also a descendant of Entity. So, An EntityManager is an Entity...
         //      Entity <-----------------------------------------
@@ -69,9 +69,15 @@ namespace RPG.Engine.Entities
             //This fires the event.
             //OnEntityCreated(entity);
         }
-        public abstract void Edit();
+        public virtual void Edit()
+        {
+
+        }
         //Store entire collection
-        public abstract void Store();
+        public virtual void Store()
+        {
+
+        }
 
         public EntityManager(string path)
         {
